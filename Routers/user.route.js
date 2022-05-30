@@ -5,6 +5,6 @@ const {updateUser} = require('../controllers/user.controller');
 
 const userRoute = express.Router();
 
-userRoute.use('/:id', updateUser);
+userRoute.put('/:id', updateUser);
 
 module.exports = userRoute;
