@@ -6,6 +6,7 @@ const PORT = 3000;
 // imported routes
 const userRoute = require('./Routers/user.route');
 const authrouter = require('./Routers/auth.route');
+const postRouter =require('./Routers/post.route');
 
 debug(express);
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(express.urlencoded({extended: true}));
 // app routes
 app.use(userRoute);
 app.use(authrouter);
+app.use(postRouter)
 
 
 // listening on console
