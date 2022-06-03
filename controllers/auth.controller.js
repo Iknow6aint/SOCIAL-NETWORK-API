@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 /* eslint-disable space-before-blocks */
 /* eslint-disable require-jsdoc */
 const bcrypt = require('bcrypt');
 const userServices = require('../services/user.services');
+
 
 async function register(req, res, next) {
   const {password} =req.body;
