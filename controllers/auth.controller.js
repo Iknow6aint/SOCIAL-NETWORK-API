@@ -18,7 +18,7 @@ async function register(req, res) {
     });
     // save user
     const user = await newUser.save();
-    res.status(200).json(user);
+    res.status(200).send(`your have successfully registered ${user}`);
   } catch (err) {
     res.status(500).json(err);
   }
