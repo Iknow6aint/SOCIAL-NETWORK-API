@@ -1,9 +1,10 @@
 /* eslint-disable linebreak-style */
 const express = require('express');
-const debug = require('debug');
 const dotenv = require('dotenv');
-const mongoose = require('mongoose')
-const PORT = 3000;
+const mongoose = require('mongoose');
+const cors = require('cors');
+const morgan =require('morgan')
+const debug = require('debug');
 // imported routes
 const userRoute = require('./Routers/user.route');
 const authrouter = require('./Routers/auth.route');
@@ -11,10 +12,13 @@ const postRouter =require('./Routers/post.route');
 
 debug(express);
 dotenv.config();
+
 // initialize express
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cors());
+app.use(morgan('combined'));
 
 // MongoDB connection, success and error event responses
 const uri = 'mongodb://127.0.0.1:27017';
@@ -32,8 +36,4 @@ app.use(authrouter);
 app.use(postRouter);
 
 
-// listening on console
-app.listen(PORT, () => {
-  debug(`Listening on port ${PORT}`);
-  console.log(`runnig on ${PORT}`);
-});
+module.exports = app;

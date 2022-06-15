@@ -67,6 +67,21 @@ async function getPost(req, res) {
   }
 }
 
+async function commentPost(req, res) {
+  const {id} = req.params;
+  const {value} = req.body;
+
+  const post = await Post.findById(id);
+
+  post.comments.push(value);
+
+  const updatedPost = await Post.findByIdAndUpdate(id, post, {
+    new: true,
+  });
+
+  res.json(updatedPost);
+}
+
 
 module.exports= {
   createPost,
@@ -74,4 +89,5 @@ module.exports= {
   deletePost,
   postReaction,
   getPost,
+  commentPost,
 };

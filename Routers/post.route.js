@@ -10,6 +10,7 @@ const {createPost,
   deletePost,
   postReaction,
   getPost,
+  commentPost,
 } = require('../controllers/post.controller');
 
 
@@ -18,5 +19,6 @@ postRouter.put('/:id', updatePost);
 postRouter.delete('/:id', deletePost);
 postRouter.put('/:id/like', postReaction);
 postRouter.get('/:id', getPost);
+postRouter.post('/id/commmentpost', commentPost);
 
 module.exports = postRouter;
